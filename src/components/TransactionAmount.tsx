@@ -25,9 +25,11 @@ const TransactionAmount: React.FC<{
 }> = ({ transaction }) => {
   const classes = useStyles();
 
+  const positiveOrNegative = isRequestTransaction(transaction) ? "positive" : "negative";
+
   return (
     <Typography
-      data-test={`transaction-amount-${transaction.id}`}
+      data-test={`transaction-amount-${transaction.id}-${positiveOrNegative}-transaction`}
       className={
         isRequestTransaction(transaction) ? classes.amountPositive : classes.amountNegative
       }

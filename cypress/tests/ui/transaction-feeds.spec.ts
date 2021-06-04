@@ -337,6 +337,7 @@ describe("Transaction Feed", function () {
           cy.wait(`@${feed.routeAlias}`)
             .its("response.body.results")
             .should("deep.equal", unfilteredResults);
+          cy.getBySelLike("positive-transaction").should("exist");
           cy.visualSnapshot("Unfiltered Transactions");
         });
 
