@@ -337,7 +337,6 @@ describe("Transaction Feed", function () {
           cy.wait(`@${feed.routeAlias}`)
             .its("response.body.results")
             .should("deep.equal", unfilteredResults);
-          cy.visualSnapshot("Unfiltered Transactions");
         });
 
         if (isMobile()) {
@@ -349,6 +348,7 @@ describe("Transaction Feed", function () {
           cy.getBySel("transaction-list-filter-date-range-button").click({ force: true });
           cy.getBySel("transaction-list-filter-amount-range").should("not.be.visible");
         }
+        cy.visualSnapshot("Unfiltered Transactions");
       });
 
       it(`does not show ${feedName} transactions for out of range amount limits`, function () {
